@@ -1,6 +1,6 @@
 ﻿namespace Hrtzz
 {
-    public static class HrtzzFileBrowser
+    public static class FileBrowserUtility
     {
         public static bool IsInMacOS
         {

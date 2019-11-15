@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HrtzzAutoSingleton<T> : MonoBehaviour where T : Component
+public class AutoSingleton<T> : MonoBehaviour where T : Component
 {
     private static T m_Instance;
     public static T Instance

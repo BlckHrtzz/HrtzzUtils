@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace Hrtzz.BuildTools
 {
-    // Custom build processor.
     public class BuildProcessor : IPostprocessBuildWithReport
     {
         public int callbackOrder => 0;
@@ -16,11 +15,6 @@ namespace Hrtzz.BuildTools
         {
             Debug.Log ("<color=green><b>Build Post Processing Started</b></color>");
             Debug.Log ("<color=green><b>Build Report : " + buildReport.summary.result + "</b></color>");
-
-            //if (buildReport.summary.result != BuildResult.Succeeded)
-            //{
-            //    return;
-            //}
 
             BuildSummary buildSummary = buildReport.summary;
 
@@ -35,11 +29,11 @@ namespace Hrtzz.BuildTools
 
             if (buildSummary.platform == BuildTarget.Android)
             {
-                HrtzzFileBrowser.Open (buildSummary.outputPath);
+                FileBrowserUtility.Open (buildSummary.outputPath);
             }
 
             //  Updates the build version after successful build.
-            HrtzzBuildPipeline.WriteBuildSettingToJson (HrtzzBuildPipeline.UpdateBuildVersion ());
+            BuildPipeline.WriteBuildSettingToJson (BuildPipeline.UpdateBuildVersion ());
         }
     }
 }

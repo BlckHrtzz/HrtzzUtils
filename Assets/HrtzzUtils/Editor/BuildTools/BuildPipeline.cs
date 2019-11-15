@@ -3,9 +3,6 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.Callbacks;
-using UnityEditor.Build.Reporting;
-using UnityEditor.Build;
 
 #if UNITY_IOS
 using UnityEditor.iOS.Xcode;
@@ -16,7 +13,7 @@ using System.Diagnostics;
 namespace Hrtzz.BuildTools
 {
     //  TODO : Write Functionality for other platforms.
-    public static class HrtzzBuildPipeline
+    public static class BuildPipeline
     {
         static string [] scenesToBuild = GetScenesToBuild ();
 
@@ -128,7 +125,7 @@ namespace Hrtzz.BuildTools
                 options = _buildOptions
             };
             //  Start the Build.
-            BuildPipeline.BuildPlayer (buildPlayerOptions);
+            UnityEditor.BuildPipeline.BuildPlayer (buildPlayerOptions);
         }
 
         //  Testing Function.
@@ -168,7 +165,7 @@ namespace Hrtzz.BuildTools
                     string tempPath = Path.Combine (_destPath, subDir.Name);
                     FileUtil.CopyFileOrDirectory (subDir.FullName, tempPath);
                 }
-                HrtzzFileBrowser.Open (_destPath);
+                FileBrowserUtility.Open (_destPath);
             }
 
         }

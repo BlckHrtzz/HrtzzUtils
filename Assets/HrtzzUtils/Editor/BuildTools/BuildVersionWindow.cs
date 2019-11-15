@@ -13,7 +13,7 @@ namespace Hrtzz.BuildTools
         [MenuItem ("Build Tools/Version Settings")]
         public static void ShowVersionSettings ()
         {
-            settings = JsonUtility.FromJson<BuildVersionSettings> (System.IO.File.ReadAllText (HrtzzBuildPipeline.VERSION_SETTINGS_LOCATION));
+            settings = JsonUtility.FromJson<BuildVersionSettings> (System.IO.File.ReadAllText (BuildPipeline.VERSION_SETTINGS_LOCATION));
             currentBuildType = (BuildType) System.Enum.Parse (typeof (BuildType), settings.buildType);
             currentBuildPhase = (BuildPhase) System.Enum.Parse (typeof (BuildPhase), settings.buildPhase);
             bundleVersion = settings.bundleVersion;
@@ -38,7 +38,7 @@ namespace Hrtzz.BuildTools
                 settings.v1 = 1;
                 settings.v2 = 0;
                 settings.v3 = 0;
-                HrtzzBuildPipeline.WriteBuildSettingToJson (settings);
+                BuildPipeline.WriteBuildSettingToJson (settings);
                 ShowVersionSettings ();
             }
 
@@ -47,7 +47,7 @@ namespace Hrtzz.BuildTools
                 settings.buildType = currentBuildType.ToString ();
                 settings.buildPhase = currentBuildPhase.ToString ();
                 settings.bundleVersion = bundleVersion;
-                HrtzzBuildPipeline.WriteBuildSettingToJson (settings);
+                BuildPipeline.WriteBuildSettingToJson (settings);
             }
             //EditorGUILayout.BeginVertical();
 

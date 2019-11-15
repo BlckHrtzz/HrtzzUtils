@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.Purchasing;
 
 [RequireComponent(typeof(UnityInAppPurchaser))]
-public class IapManager : HrtzzAutoReferenceer<IapManager>
+public class IapManager : AutoReferenceer<IapManager>
 {
 	private UnityInAppPurchaser m_UnityInAppPurchaser;
 	public HashSet<InAppItem> inAppItems = new HashSet<InAppItem>();
